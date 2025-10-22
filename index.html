@@ -4,295 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caatinga - O Bioma Brasileiro Único</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --terra: #C4875C;
-            --areia: #E8D5B7;
-            --verde-seco: #8B9556;
-            --cacto: #6B8E4E;
-            --ceu: #87CEEB;
-            --pedra: #8B7355;
-            --texto: #3D2817;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: var(--texto);
-            background: linear-gradient(135deg, var(--areia) 0%, #f5ebe0 100%);
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--terra) 0%, var(--pedra) 100%);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" opacity="0.1">🌵</text></svg>') repeat;
-            opacity: 0.3;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            font-style: italic;
-            position: relative;
-            z-index: 1;
-        }
-
-        nav {
-            background: var(--verde-seco);
-            padding: 1.2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            padding: 0.6rem 1.2rem;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        nav a:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        section {
-            background: white;
-            margin: 2rem 0;
-            padding: 3rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-        }
-
-        h2 {
-            color: var(--terra);
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 3px solid var(--verde-seco);
-            padding-bottom: 0.5rem;
-        }
-
-        h3 {
-            color: var(--cacto);
-            font-size: 1.8rem;
-            margin: 2rem 0 1rem 0;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .card {
-            background: linear-gradient(135deg, var(--areia) 0%, white 100%);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--cacto);
-            transition: all 0.3s;
-        }
-
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-        }
-
-        .card h4 {
-            color: var(--terra);
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, var(--verde-seco) 0%, var(--cacto) 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem 0;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-        }
-
-        .stat-box {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: var(--areia);
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--terra);
-        }
-
-        .location-list {
-            columns: 2;
-            gap: 2rem;
-            margin: 1rem 0;
-        }
-
-        .location-list li {
-            margin: 0.5rem 0;
-            padding: 0.5rem;
-            background: var(--areia);
-            border-radius: 5px;
-            break-inside: avoid;
-        }
-
-        footer {
-            background: var(--pedra);
-            color: white;
-            padding: 3rem 2rem;
-            margin-top: 3rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .references {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 10px;
-            margin-top: 2rem;
-        }
-
-        .references h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid rgba(255,255,255,0.3);
-            padding-bottom: 0.5rem;
-        }
-
-        .references ol {
-            list-style-position: inside;
-            line-height: 2;
-        }
-
-        .references li {
-            margin: 1rem 0;
-            padding-left: 1rem;
-        }
-
-        .references a {
-            color: var(--areia);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .references a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            section {
-                padding: 1.5rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            nav a {
-                font-size: 1rem;
-            }
-
-            .location-list {
-                columns: 1;
-            }
-
-            .container {
-                padding: 1rem;
-            }
-
-            .stat-number {
-                font-size: 2rem;
-            }
-        }
-
-        .icon {
-            font-size: 2rem;
-            margin-bottom: 0.8rem;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>🌵 Caatinga 🌵</h1>
+        <h1>🌵 Caatinga 🌵</h1
         <p class="subtitle">O Único Bioma Exclusivamente Brasileiro</p>
     </header>
 
@@ -357,27 +73,28 @@
             </div>
 
             <div class="grid">
-                <div class="card">
-                    <div class="icon">🌵</div>
-                    <h4>Cactos e Suculentas</h4>
-                    <p>Mandacaru, xique-xique, coroa-de-frade e facheiro. Armazenam água e possuem espinhos para proteção.</p>
+                <div class="gallery-item">
+                    <h4> 🌵 Cactos e Suculentas </h4>
+                    <img src="flora/cactos/cacto.jpg" alt="Cacto">
+                    <p id="desc">Mandacaru, xique-xique, coroa-de-frade e facheiro. Armazenam água e possuem espinhos para proteção</p>
                 </div>
-                <div class="card">
-                    <div class="icon">🌳</div>
-                    <h4>Árvores Típicas</h4>
-                    <p>Juazeiro (que não perde folhas na seca), aroeira, umbuzeiro, baraúna e catingueira. Muitas perdem folhas no período seco.</p>
+                <div class="gallery-item">
+                    <h4> 🌳 Árvores Típicas </h4>
+                    <img src="flora/juazeiro/Juazeiro.jpg" alt="Juazeiro">
+                    <p id="desc">Juazeiro (que não perde folhas na seca), aroeira, umbuzeiro, baraúna e catingueira. Muitas perdem folhas no período seco.</p>
                 </div>
-                <div class="card">
-                    <div class="icon">🌿</div>
-                    <h4>Arbustos</h4>
-                    <p>Jurema-preta, marmeleiro, mofumbo e calumbi. Formam vegetação densa em algumas áreas.</p>
+                <div class="gallery-item">
+                    <h4> 🌿 Arbustos </h4>
+                    <img src="flora/marmeleiro/marmeleiro.jpg" alt="Marmeleiro">
+                    <p id="desc">Jurema-preta, marmeleiro, mofumbo e calumbi. Formam vegetação densa em algumas áreas.</p>
                 </div>
-                <div class="card">
-                    <div class="icon">🌸</div>
-                    <h4>Bromélias</h4>
-                    <p>Macambira e outras espécies que acumulam água e servem de refúgio para fauna.</p>
+                <div class="gallery-item">
+                    <h4> 🌸 Bromélias </h4>
+                    <img src="flora/macambira/macambira.jpg" alt="Macambira">
+                    <p id="desc">Macambira e outras espécies que acumulam água e servem de refúgio para fauna.</p>
                 </div>
             </div>
+           
 
             <p><strong>Curiosidade:</strong> A flora possui três estratos: arbóreo, arbustivo e herbáceo, formando uma estrutura resistente e adaptada às condições áridas.</p>
         </section>
@@ -386,92 +103,143 @@
             <h2>Fauna da Caatinga</h2>
             <p>A fauna da Caatinga é bastante diversificada, com aproximadamente 1.824 espécies de animais entre vertebrados e invertebrados, incluindo cerca de 178 espécies de mamíferos, mais de 200 espécies de aves, 97 espécies de répteis e 45 espécies de anfíbios.</p>
 
+            <!-- Nova subseção: Galeria de Mamíferos -->
             <h3>Mamíferos</h3>
-            <div class="grid">
-                <div class="card">
+            <div class="grid gallery">
+                <div class="gallery-item">
                     <h4>🦊 Raposa-do-nordeste</h4>
-                    <p>Pequeno canídeo endêmico, adaptado ao clima seco da região.</p>
+                    <img src="fauna/mamiferos/raposa.jpg" alt="Raposa-do-nordeste">
+                    <p id="desc">Pequeno canídeo endêmico, adaptado ao clima seco da região.</p>
                 </div>
-                <div class="card">
+
+                <div class="gallery-item">
                     <h4>🐆 Onça-parda</h4>
-                    <p>Predador de topo, ameaçado pela perda de habitat.</p>
+                    <img src="fauna/mamiferos/onca.jpg" alt="Onça-parda">
+                    <p id="desc">Predador de topo, ameaçado pela perda de habitat.</p>
                 </div>
-                <div class="card">
+
+                <div class="gallery-item">
                     <h4>🦝 Gato-do-mato</h4>
-                    <p>Felino de pequeno porte com hábitos noturnos.</p>
+                    <img src="fauna/mamiferos/gato.jpg" alt="Gato-do-mato">
+                    <p id="desc">Felino de pequeno porte com hábitos noturnos.</p>
                 </div>
-                <div class="card">
+
+                <div class="gallery-item">
                     <h4>🦌 Veado-catingueiro</h4>
-                    <p>Menor veado brasileiro, bem adaptado ao ambiente.</p>
+                    <img src="fauna/mamiferos/veado.jpg" alt="Veado-catingueiro">
+                    <p id="desc">Menor veado brasileiro, bem adaptado ao ambiente.</p>
                 </div>
             </div>
 
+            <!-- Nova subseção: Galeria de Aves -->
             <h3>Aves</h3>
-            <div class="grid">
-                <div class="card">
+
+            <div class="grid gallery">
+
+                <div class="gallery-item">
                     <h4>🦜 Arara-azul-de-lear</h4>
-                    <p>Espécie endêmica e criticamente ameaçada, símbolo da conservação da Caatinga.</p>
+                    <img src="fauna/aves/arara.jpg" alt="Arara-azul-de-lear">
+                    <p id="desc">Espécie endêmica e criticamente ameaçada, símbolo da conservação da Caatinga.</p>
                 </div>
-                <div class="card">
+
+                <div class="gallery-item">
                     <h4>🕊️ Asa-branca</h4>
-                    <p>Ave símbolo do Nordeste, imortalizada em canções populares.</p>
+                    <img src="fauna/aves/asa-branca.jpg" alt="Asa-branca">
+                    <p id="desc">Ave símbolo do Nordeste, imortalizada em canções populares.</p>
                 </div>
-                <div class="card">
+
+                <div class="gallery-item">
                     <h4>🦅 Gavião-carijó</h4>
-                    <p>Predador comum nas áreas de caatinga.</p>
+                    <img src="fauna/aves/gaviao.jpg" alt="Gavião-carijó">
+                    <p id="desc">Predador comum nas áreas de caatinga.</p>
                 </div>
-                <div class="card">
+
+                <div class="gallery-item">
                     <h4>🐦 Periquito-da-caatinga</h4>
-                    <p>Pequeno psitacídeo endêmico da região.</p>
+                    <img src="fauna/aves/periquito.jpg" alt="Periquito-da-caatinga">
+                    <p id="desc">Pequeno psitacídeo endêmico da região.</p>
                 </div>
+
             </div>
 
+            <!-- Nova subseção: Galeria de Répteis e Outros -->
             <h3>Répteis e Outros</h3>
-            <div class="grid">
-                <div class="card">
+            <div class="grid gallery">
+                
+                <div class="gallery-item">
                     <h4>🦎 Lagartos</h4>
-                    <p>79 espécies de lagartos registradas no bioma, incluindo o lagarto-teiú.</p>
+                    <img src="fauna/repteis/lagarto.jpg" alt="Lagarto-teiú">
+                    <p id="desc">79 espécies de lagartos registradas no bioma, incluindo o lagarto-teiú.</p>
                 </div>
-                <div class="card">
+
+                <div class="gallery-item">
                     <h4>🐍 Serpentes</h4>
-                    <p>114 espécies de serpentes, incluindo jiboias e cobras-coral.</p>
+
+                    <img src="fauna/repteis/jiboia.jpg" alt="Serpente">
+                    <p id="desc">114 espécies de serpentes, incluindo jiboias e cobras-coral.</p>
                 </div>
-                <div class="card">
+
+                <div class="gallery-item">
                     <h4>🐝 Abelhas Nativas</h4>
-                    <p>187 espécies de abelhas, incluindo uruçus sem ferrão.</p>
+
+                    <img src="fauna/repteis/abelha.jpg" alt="Abelha nativa">
+                    <p id="desc">187 espécies de abelhas, incluindo uruçus sem ferrão.</p>
                 </div>
-                <div class="card">
+
+                <div class="gallery-item">
                     <h4>🐟 Peixes</h4>
-                    <p>240 espécies de peixes adaptadas aos rios intermitentes.</p>
+                    <img src="fauna/repteis/peixe.jpg" alt="Peixe da Caatinga">
+                    <p id="desc">240 espécies de peixes adaptadas aos rios intermitentes.</p>
                 </div>
+
             </div>
 
             <p><strong>Destaque:</strong> Cerca de 20 espécies de anfíbios são endêmicas da Caatinga, demonstrando a singularidade desse bioma.</p>
         </section>
 
         <section id="localizacao">
-            <h2>Localização Geográfica</h2>
-            <p>A Caatinga ocupa uma área de 862.818 km², equivalente a 10,1% do território nacional, e encontra-se inteiramente dentro do Brasil, sendo o único bioma exclusivamente brasileiro.</p>
+            <div class="estados-descricao">
+                <h2>Localização Geográfica</h2>
+                <p>A Caatinga ocupa uma área de 862.818 km², equivalente a 10,1% do território nacional, e encontra-se inteiramente dentro do Brasil, sendo o único bioma exclusivamente brasileiro.</p>
 
-            <div class="highlight">
-                <h3 style="color: white;">Estados Abrangidos</h3>
-                <p>O bioma está presente em 10 estados brasileiros, ocupando a maior parte do sertão nordestino.</p>
+                <div class="highlight">
+                    <h3 style="color: white;">Estados Abrangidos</h3>
+                    <p>O bioma está presente em 10 estados brasileiros, ocupando a maior parte do sertão nordestino.</p>
+                </div>
+
+                <div id="img_mapa">
+                    <img id="myImg" src="mapa_caatinga.bmp" alt="Mapa dos Estados (Caatinga)" style="width:100%;max-width:300px">
+                </div>
+
+                <div id="myModal" class="modal">
+
+                <!-- The Close Button -->
+                <span class="close">&times;</span>
+
+                <!-- Modal Content (The Image) -->
+                <img class="modal-content" id="img01">
+
+                <!-- Modal Caption (Image Text) -->
+                <div id="caption"></div>
+                </div>
+
+
+                <ul class="location-list">
+                    <li>🔹 <strong>Bahia</strong> - Maior porção do bioma</li>
+                    <li>🔹 <strong>Ceará</strong> - Quase totalidade do estado</li>
+                    <li>🔹 <strong>Pernambuco</strong> - Interior do estado</li>
+                    <li>🔹 <strong>Piauí</strong> - Região sul e central</li>
+                    <li>🔹 <strong>Paraíba</strong> - Maior parte do território</li>
+                    <li>🔹 <strong>Rio Grande do Norte</strong> - Interior</li>
+                    <li>🔹 <strong>Alagoas</strong> - Sertão alagoano</li>
+                    <li>🔹 <strong>Sergipe</strong> - Região oeste</li>
+                    <li>🔹 <strong>Maranhão</strong> - Sul do estado</li>
+                    <li>🔹 <strong>Minas Gerais</strong> - Norte mineiro</li>
+                </ul>
+
+                <p style="margin-top: 2rem;"><strong>Total de municípios:</strong> 1.095 municípios brasileiros têm a Caatinga como bioma predominante.</p>
             </div>
-
-            <ul class="location-list">
-                <li>🔹 <strong>Bahia</strong> - Maior porção do bioma</li>
-                <li>🔹 <strong>Ceará</strong> - Quase totalidade do estado</li>
-                <li>🔹 <strong>Pernambuco</strong> - Interior do estado</li>
-                <li>🔹 <strong>Piauí</strong> - Região sul e central</li>
-                <li>🔹 <strong>Paraíba</strong> - Maior parte do território</li>
-                <li>🔹 <strong>Rio Grande do Norte</strong> - Interior</li>
-                <li>🔹 <strong>Alagoas</strong> - Sertão alagoano</li>
-                <li>🔹 <strong>Sergipe</strong> - Região oeste</li>
-                <li>🔹 <strong>Maranhão</strong> - Sul do estado</li>
-                <li>🔹 <strong>Minas Gerais</strong> - Norte mineiro</li>
-            </ul>
-
-            <p style="margin-top: 2rem;"><strong>Total de municípios:</strong> 1.095 municípios brasileiros têm a Caatinga como bioma predominante.</p>
+            
         </section>
 
         <section id="mudancas-climaticas">
@@ -629,12 +397,28 @@
                         <a href="https://www.biologianet.com/ecologia/caatinga.htm" target="_blank">www.biologianet.com</a><br>
                         <em>Conteúdo educacional detalhado sobre as características ecológicas do bioma.</em>
                     </li>
+
+                    <li>
+                        <strong>Neoenergia</strong> - Caatinga: Bioma 100% Brasileiro<br>
+                        <a href="https://www.neoenergia.com/w/caatinga-bioma-100-brasileiro" target="_blank">www.neoenergia.com</a><br>
+                        <em>Mapa sobre a ocorrência do bioma nos estados brasileiros</em>
+                    </li>
                 </ol>
-                <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
-                    <strong>Nota:</strong> Todas as informações apresentadas neste website são baseadas em fontes científicas confiáveis e atualizadas. Os dados foram compilados para fins educacionais e de conscientização sobre a importância da preservação do bioma Caatinga.
-                </p>
+                
             </div>
+
+                    <div id="developed">
+                        <p><strong id="developed-by">Desenvolvido por: </strong>
+                            <a href="https://www.instagram.com/carlos.pozenatto/" id="insta">Carlos E. M. Pozenatto;</a>
+                            <a href="https://www.instagram.com/rafaelbaccin/" id="insta">Rafael Baccin;</a>
+                            <a href="https://www.instagram.com/matheus_sciocari/" id="insta">Matheus S. Ciocari;</a>
+                            <a href="https://www.instagram.com/g00d_lc/" id="insta">Lucas G. Bortolini.</a>
+                           </p>
+                    </div>
+    
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
