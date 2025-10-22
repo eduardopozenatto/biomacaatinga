@@ -1,0 +1,547 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+:root {
+    --terra: #C4875C;
+    --areia: #E8D5B7;
+    --verde-seco: #8B9556;
+    --cacto: #6B8E4E;
+    --ceu: #87CEEB;
+    --pedra: #8B7355;
+    --texto: #3D2817;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    color: var(--texto);
+    background: linear-gradient(135deg, var(--areia) 0%, #f5ebe0 100%);
+    font-size: 16px; /* Base font size for rem calculations */
+    scroll-behavior: smooth;
+}
+
+header {
+    background: linear-gradient(135deg, var(--terra) 0%, var(--pedra) 100%);
+    color: white;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" opacity="0.1">🌵</text></svg>') repeat;
+    opacity: 0.3;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Scales between 2rem and 3.5rem */
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 1;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    opacity: 0.95;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+nav {
+    background: var(--verde-seco);
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(1rem, 2vw, 2rem);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+section {
+    background: white;
+    margin: 2rem 0;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+
+h2 {
+    color: var(--terra);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--verde-seco);
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    color: var(--cacto);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin: 2rem 0 1rem 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 30vw, 300px), 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin: 2rem 0;
+}
+
+.card {
+    background: linear-gradient(135deg, var(--areia) 0%, white 100%);
+    padding: clamp(1rem, 2vw, 1.5rem);
+    border-radius: 10px;
+    border-left: 4px solid var(--cacto);
+    transition: all 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.card h4 {
+    color: var(--terra);
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    margin-bottom: 0.8rem;
+}
+
+.card p {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    line-height: 1.5;
+}
+
+#desc {
+    text-align: justify;
+}
+
+.highlight {
+    background: linear-gradient(120deg, var(--verde-seco) 0%, var(--cacto) 100%);
+    color: white;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border-radius: 10px;
+    margin: 2rem 0;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.stat-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--areia);
+    padding: clamp(1rem, 2vw, 1.5rem);
+    border-radius: 10px;
+    margin: 1rem 0;
+}
+
+#localizacao {
+    display: flex;
+    
+}
+
+.stat-number {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: bold;
+    color: var(--terra);
+}
+
+#img_mapa {
+    display: flex;
+    place-content: center;
+    place-items: center;
+}
+
+ /* Style the Image Used to Trigger the Modal */
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 300px;
+  height: 300px;
+}
+
+#myImg:hover {
+   opacity: 0.7;
+}
+
+.location-list {
+    columns: clamp(1, 2, 3); /* Adjust columns based on screen size */
+    gap: clamp(1rem, 2vw, 2rem);
+    margin: 1rem 0;
+}
+
+.location-list li {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: var(--areia);
+    border-radius: 5px;
+    break-inside: avoid;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+}
+
+footer {
+    background: var(--pedra);
+    color: white;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 2vw, 2rem);
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.references {
+    background: rgba(255,255,255,0.1);
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.references h3 {
+    color: white;
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.5rem;
+}
+
+.references ol {
+    list-style-position: inside;
+    line-height: 2;
+    font-size: clamp(0.85rem, 2vw, 1rem);
+}
+
+.references li {
+    margin: 1rem 0;
+    padding-left: 1rem;
+}
+
+.references a {
+    color: var(--areia);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.references a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.icon {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 0.8rem;
+}
+
+/* Estilos para a galeria de imagens */
+.gallery {
+    margin: 2rem 0; /* Mesma margem que .grid */
+}
+
+.gallery-item {
+    background: linear-gradient(135deg, var(--areia) 0%, white 100%); /* Mesmo fundo que .card */
+    padding: clamp(1rem, 2vw, 1.5rem);
+    border-radius: 10px;
+    border-left: 4px solid var(--cacto); /* Mesma borda que .card */
+    transition: all 0.3s; /* Transição para hover */
+    text-align: center; /* Centralizar imagens e texto */
+}
+
+.gallery-item:hover {
+    transform: scale(1.03); /* Efeito de zoom, similar a .card */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.gallery-item img {
+    width: 100%; /* Imagens responsivas */
+    height: auto; /* Mantém proporção */
+    max-height: 200px; /* Limite para não dominar o layout */
+    object-fit: cover; /* Cortes imagens para caber */
+    border-radius: 8px; /* Bordas arredondadas */
+    margin-bottom: 0.8rem; /* Espaço para a legenda */
+}
+
+.gallery-item p {
+    font-size: clamp(0.85rem, 2vw, 1rem); /* Mesmo tamanho que parágrafos em .card */
+    color: var(--terra); /* Cor do texto para combinar */
+    font-weight: bold; /* Destaque na legenda */
+}
+
+#developed {
+    display: flex;
+    height: auto;
+    object-fit: cover;
+    margin-top: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: #3D2817;
+    border-radius: 10px;
+}
+
+#developed-by {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    place-content: center;
+    font-family: 'Poppins', sans-serif;
+    align-items: left;
+}
+
+#insta {
+    text-decoration: none;
+    color: whitesmoke;
+    transition: all 1s ease;
+}
+
+#insta:hover {
+    color: grey;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 99999; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 100%;
+  max-width: auto;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+    .container {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: clamp(1.8rem, 4.5vw, 3rem);
+    }
+
+    h2 {
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    }
+
+    h3 {
+        font-size: clamp(1.3rem, 3vw, 1.8rem);
+    }
+
+    nav ul {
+        gap: 1rem;
+    }
+
+    nav a {
+        font-size: clamp(0.85rem, 2vw, 1.1rem);
+        padding: 0.5rem 1rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .stat-number {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+
+    .location-list {
+        columns: 2;
+    }
+    
+    #myImg:hover {
+        transform: scale(1.4);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
+    }
+
+    h2 {
+        font-size: clamp(1.4rem, 4vw, 2rem);
+    }
+
+    h3 {
+        font-size: clamp(1.2rem, 3vw, 1.6rem);
+    }
+
+    section {
+        padding: clamp(1rem, 3vw, 1.5rem);
+    }
+    
+    nav {
+        position: static;
+        
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    nav a {
+        font-size: clamp(0.8rem, 2.5vw, 1rem);
+        padding: 0.5rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* Single column for small screens */
+    }
+
+    .location-list {
+        columns: 1;
+    }
+
+    .stat-number {
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+    }
+    
+    #developed {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    #myImg:hover {
+        transform: scale(1.2);
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    h1 {
+        font-size: clamp(3rem, 5vw, 4rem);
+    }
+
+    h2 {
+        font-size: clamp(2.2rem, 4vw, 3rem);
+    }
+
+    h3 {
+        font-size: clamp(1.6rem, 3vw, 2.2rem);
+    }
+
+    nav a {
+        font-size: clamp(1rem, 2vw, 1.3rem);
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+}

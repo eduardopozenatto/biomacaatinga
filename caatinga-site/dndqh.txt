@@ -1,0 +1,8 @@
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+.gallery-item:hover {
+    transform: scale(1.03); /* Efeito de zoom, similar a .card */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}

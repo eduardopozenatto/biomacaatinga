@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caatinga - O Bioma Brasileiro Único</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --terra: #C4875C;
+            --areia: #E8D5B7;
+            --verde-seco: #8B9556;
+            --cacto: #6B8E4E;
+            --ceu: #87CEEB;
+            --pedra: #8B7355;
+            --texto: #3D2817;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--texto);
+            background: linear-gradient(135deg, var(--areia) 0%, #f5ebe0 100%);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--terra) 0%, var(--pedra) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="40" opacity="0.1">🌵</text></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            background: var(--verde-seco);
+            padding: 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            color: var(--terra);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--verde-seco);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--cacto);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, var(--areia) 0%, white 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--cacto);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .card h4 {
+            color: var(--terra);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, var(--verde-seco) 0%, var(--cacto) 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .stat-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--areia);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--terra);
+        }
+
+        .location-list {
+            columns: 2;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .location-list li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: var(--areia);
+            border-radius: 5px;
+            break-inside: avoid;
+        }
+
+        footer {
+            background: var(--pedra);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .references {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .references h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .references ol {
+            list-style-position: inside;
+            line-height: 2;
+        }
+
+        .references li {
+            margin: 1rem 0;
+            padding-left: 1rem;
+        }
+
+        .references a {
+            color: var(--areia);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .references a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                font-size: 1rem;
+            }
+
+            .location-list {
+                columns: 1;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌵 Caatinga 🌵</h1>
+        <p class="subtitle">O Único Bioma Exclusivamente Brasileiro</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#caracteristicas">Características</a></li>
+            <li><a href="#flora">Flora</a></li>
+            <li><a href="#fauna">Fauna</a></li>
+            <li><a href="#localizacao">Localização</a></li>
+            <li><a href="#mudancas-climaticas">Mudanças Climáticas</a></li>
+            <li><a href="#importancia">Importância</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="caracteristicas">
+            <h2>Características do Bioma</h2>
+            <p>A Caatinga é um bioma único, exclusivamente brasileiro, caracterizado por sua vegetação adaptada ao clima semiárido. O nome "Caatinga" vem do tupi-guarani e significa "mata branca", referência ao aspecto esbranquiçado da vegetação durante a época de seca.</p>
+            
+            <div class="grid">
+                <div class="stat-box">
+                    <div class="stat-number">862.818</div>
+                    <div>km² de extensão territorial (IBGE, 2019)</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">10%</div>
+                    <div>do território brasileiro</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">27M</div>
+                    <div>de pessoas vivendo na região</div>
+                </div>
+            </div>
+
+            <h3>Clima e Solo</h3>
+            <div class="grid">
+                <div class="card">
+                    <div class="icon">☀️</div>
+                    <h4>Clima Semiárido</h4>
+                    <p>Temperaturas médias entre 25°C e 29°C, com baixa umidade relativa do ar durante grande parte do ano.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">💧</div>
+                    <h4>Baixa Pluviosidade</h4>
+                    <p>Chuvas irregulares entre 300mm e 800mm anuais, concentradas em poucos meses do ano.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🏜️</div>
+                    <h4>Solo Variado</h4>
+                    <p>Predominam solos rasos, pedregosos e ricos em minerais, mas pobres em matéria orgânica.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="flora">
+            <h2>Flora da Caatinga</h2>
+            <p>A vegetação da Caatinga é extremamente adaptada às condições de seca prolongada, com mais de 1.000 espécies de plantas vasculares, sendo muitas endêmicas do bioma.</p>
+
+            <div class="highlight">
+                <h3 style="color: white;">Adaptações Especiais</h3>
+                <p>As plantas da Caatinga desenvolveram características xerófilas: folhas miúdas, cascas grossas, espinhos para reduzir perda de água, raízes profundas, e troncos que acumulam água. Essas estratégias evitam a evapotranspiração intensa e possibilitam o armazenamento de água durante os meses de seca.</p>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="icon">🌵</div>
+                    <h4>Cactos e Suculentas</h4>
+                    <p>Mandacaru, xique-xique, coroa-de-frade e facheiro. Armazenam água e possuem espinhos para proteção.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌳</div>
+                    <h4>Árvores Típicas</h4>
+                    <p>Juazeiro (que não perde folhas na seca), aroeira, umbuzeiro, baraúna e catingueira. Muitas perdem folhas no período seco.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌿</div>
+                    <h4>Arbustos</h4>
+                    <p>Jurema-preta, marmeleiro, mofumbo e calumbi. Formam vegetação densa em algumas áreas.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌸</div>
+                    <h4>Bromélias</h4>
+                    <p>Macambira e outras espécies que acumulam água e servem de refúgio para fauna.</p>
+                </div>
+            </div>
+
+            <p><strong>Curiosidade:</strong> A flora possui três estratos: arbóreo, arbustivo e herbáceo, formando uma estrutura resistente e adaptada às condições áridas.</p>
+        </section>
+
+        <section id="fauna">
+            <h2>Fauna da Caatinga</h2>
+            <p>A fauna da Caatinga é bastante diversificada, com aproximadamente 1.824 espécies de animais entre vertebrados e invertebrados, incluindo cerca de 178 espécies de mamíferos, mais de 200 espécies de aves, 97 espécies de répteis e 45 espécies de anfíbios.</p>
+
+            <h3>Mamíferos</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🦊 Raposa-do-nordeste</h4>
+                    <p>Pequeno canídeo endêmico, adaptado ao clima seco da região.</p>
+                </div>
+                <div class="card">
+                    <h4>🐆 Onça-parda</h4>
+                    <p>Predador de topo, ameaçado pela perda de habitat.</p>
+                </div>
+                <div class="card">
+                    <h4>🦝 Gato-do-mato</h4>
+                    <p>Felino de pequeno porte com hábitos noturnos.</p>
+                </div>
+                <div class="card">
+                    <h4>🦌 Veado-catingueiro</h4>
+                    <p>Menor veado brasileiro, bem adaptado ao ambiente.</p>
+                </div>
+            </div>
+
+            <h3>Aves</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🦜 Arara-azul-de-lear</h4>
+                    <p>Espécie endêmica e criticamente ameaçada, símbolo da conservação da Caatinga.</p>
+                </div>
+                <div class="card">
+                    <h4>🕊️ Asa-branca</h4>
+                    <p>Ave símbolo do Nordeste, imortalizada em canções populares.</p>
+                </div>
+                <div class="card">
+                    <h4>🦅 Gavião-carijó</h4>
+                    <p>Predador comum nas áreas de caatinga.</p>
+                </div>
+                <div class="card">
+                    <h4>🐦 Periquito-da-caatinga</h4>
+                    <p>Pequeno psitacídeo endêmico da região.</p>
+                </div>
+            </div>
+
+            <h3>Répteis e Outros</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🦎 Lagartos</h4>
+                    <p>79 espécies de lagartos registradas no bioma, incluindo o lagarto-teiú.</p>
+                </div>
+                <div class="card">
+                    <h4>🐍 Serpentes</h4>
+                    <p>114 espécies de serpentes, incluindo jiboias e cobras-coral.</p>
+                </div>
+                <div class="card">
+                    <h4>🐝 Abelhas Nativas</h4>
+                    <p>187 espécies de abelhas, incluindo uruçus sem ferrão.</p>
+                </div>
+                <div class="card">
+                    <h4>🐟 Peixes</h4>
+                    <p>240 espécies de peixes adaptadas aos rios intermitentes.</p>
+                </div>
+            </div>
+
+            <p><strong>Destaque:</strong> Cerca de 20 espécies de anfíbios são endêmicas da Caatinga, demonstrando a singularidade desse bioma.</p>
+        </section>
+
+        <section id="localizacao">
+            <h2>Localização Geográfica</h2>
+            <p>A Caatinga ocupa uma área de 862.818 km², equivalente a 10,1% do território nacional, e encontra-se inteiramente dentro do Brasil, sendo o único bioma exclusivamente brasileiro.</p>
+
+            <div class="highlight">
+                <h3 style="color: white;">Estados Abrangidos</h3>
+                <p>O bioma está presente em 10 estados brasileiros, ocupando a maior parte do sertão nordestino.</p>
+            </div>
+
+            <ul class="location-list">
+                <li>🔹 <strong>Bahia</strong> - Maior porção do bioma</li>
+                <li>🔹 <strong>Ceará</strong> - Quase totalidade do estado</li>
+                <li>🔹 <strong>Pernambuco</strong> - Interior do estado</li>
+                <li>🔹 <strong>Piauí</strong> - Região sul e central</li>
+                <li>🔹 <strong>Paraíba</strong> - Maior parte do território</li>
+                <li>🔹 <strong>Rio Grande do Norte</strong> - Interior</li>
+                <li>🔹 <strong>Alagoas</strong> - Sertão alagoano</li>
+                <li>🔹 <strong>Sergipe</strong> - Região oeste</li>
+                <li>🔹 <strong>Maranhão</strong> - Sul do estado</li>
+                <li>🔹 <strong>Minas Gerais</strong> - Norte mineiro</li>
+            </ul>
+
+            <p style="margin-top: 2rem;"><strong>Total de municípios:</strong> 1.095 municípios brasileiros têm a Caatinga como bioma predominante.</p>
+        </section>
+
+        <section id="mudancas-climaticas">
+            <h2>Mudanças Climáticas e Seus Impactos</h2>
+            <p>A Caatinga é um dos biomas brasileiros mais vulneráveis às mudanças climáticas. O aumento de temperatura e as alterações nos padrões de precipitação já estão causando impactos significativos no ecossistema e nas comunidades que dependem dele.</p>
+
+            <div class="highlight" style="background: linear-gradient(120deg, #C44C00 0%, #8B3A00 100%);">
+                <h3 style="color: white;">⚠️ Alerta Crítico</h3>
+                <p>Cerca de 62% das áreas susceptíveis à desertificação no Brasil se encontram na Caatinga. O processo de desertificação pode ser irreversível, afetando permanentemente a capacidade do solo de sustentar vida.</p>
+            </div>
+
+            <h3>Principais Impactos</h3>
+            <div class="grid">
+                <div class="card" style="border-left-color: #C44C00;">
+                    <div class="icon">🌡️</div>
+                    <h4>Aumento de Temperatura</h4>
+                    <p>As temperaturas mais elevadas intensificam a evapotranspiração, reduzindo a disponibilidade de água e aumentando o estresse hídrico das plantas.</p>
+                </div>
+                <div class="card" style="border-left-color: #C44C00;">
+                    <div class="icon">🏜️</div>
+                    <h4>Desertificação Acelerada</h4>
+                    <p>Eventos climáticos extremos combinados com desmatamento e manejo inadequado do solo aceleram o processo de desertificação, que pode tornar-se irreversível.</p>
+                </div>
+                <div class="card" style="border-left-color: #C44C00;">
+                    <div class="icon">💧</div>
+                    <h4>Alteração no Regime de Chuvas</h4>
+                    <p>Mudanças nos padrões de precipitação tornam as secas mais longas e intensas, comprometendo rios intermitentes e o abastecimento das comunidades.</p>
+                </div>
+                <div class="card" style="border-left-color: #C44C00;">
+                    <div class="icon">🌱</div>
+                    <h4>Perda de Biodiversidade</h4>
+                    <p>Espécies endêmicas enfrentam ameaça crescente devido à perda de habitat e às condições ambientais cada vez mais extremas.</p>
+                </div>
+            </div>
+
+            <h3>Consequências Ambientais e Sociais</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🌾 Agricultura e Segurança Alimentar</h4>
+                    <p>A desertificação prejudica a qualidade do solo, reduzindo sua capacidade produtiva e ameaçando a agricultura de subsistência das comunidades locais.</p>
+                </div>
+                <div class="card">
+                    <h4>🔥 Degradação do Solo</h4>
+                    <p>Queimadas, excesso de animais criados soltos e derrubadas de árvores aceleram a degradação, reduzindo em mais de 50% a funcionalidade do solo.</p>
+                </div>
+                <div class="card">
+                    <h4>💨 Redução do Sequestro de Carbono</h4>
+                    <p>Solos degradados perdem sua capacidade de sequestrar CO₂, contribuindo ainda mais para o agravamento das mudanças climáticas.</p>
+                </div>
+                <div class="card">
+                    <h4>👥 Impacto nas Comunidades</h4>
+                    <p>A população que depende dos recursos naturais da Caatinga enfrenta desafios crescentes de acesso à água, alimentos e condições básicas de vida.</p>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <h3 style="color: white;">🌿 Adaptação e Resiliência</h3>
+                <p>Apesar dos desafios, a Caatinga demonstra notável resistência e adaptabilidade. Suas espécies desenvolveram mecanismos únicos para sobreviver em condições extremas, tornando o bioma um modelo importante para estratégias de combate à desertificação e adaptação às mudanças climáticas em outras regiões do mundo.</p>
+            </div>
+
+            <p style="margin-top: 2rem;"><strong>Urgência:</strong> Apenas 1,5% do território da Caatinga está protegido em unidades de conservação de proteção integral, tornando urgente a ampliação das áreas protegidas e a implementação de políticas públicas eficazes para restauração e uso sustentável do bioma.</p>
+        </section>
+
+        <section id="importancia">
+            <h2>Importância e Conservação</h2>
+            
+            <h3>Importância Ecológica</h3>
+            <p>A Caatinga abriga uma biodiversidade única, com endemismo variando de 9% em aves até 57% em peixes, além de serviços ecossistêmicos essenciais para 27 milhões de brasileiros.</p>
+
+            <div class="grid">
+                <div class="card">
+                    <div class="icon">🌱</div>
+                    <h4>Biodiversidade Única</h4>
+                    <p>Patrimônio biológico que não existe em nenhuma outra região do mundo, com centenas de espécies endêmicas.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">💧</div>
+                    <h4>Recursos Hídricos</h4>
+                    <p>Importante para recarga de aquíferos e manutenção de rios intermitentes.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">👥</div>
+                    <h4>Cultura Local</h4>
+                    <p>Base da cultura sertaneja e sustento de populações tradicionais.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌾</div>
+                    <h4>Recursos Naturais</h4>
+                    <p>Fornece madeira, alimentos, medicamentos e forragem para criação animal.</p>
+                </div>
+            </div>
+
+            <h3>Ameaças e Desafios</h3>
+            <div class="highlight" style="background: linear-gradient(120deg, var(--terra) 0%, var(--pedra) 100%);">
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>⚠️ <strong>Desmatamento:</strong> Para agricultura, pecuária e extração de lenha</li>
+                    <li>⚠️ <strong>Degradação do solo:</strong> Práticas inadequadas causam erosão e desertificação</li>
+                    <li>⚠️ <strong>Caça ilegal:</strong> Ameaça espécies já vulneráveis</li>
+                    <li>⚠️ <strong>Mudanças climáticas:</strong> Intensificam secas e eventos extremos</li>
+                </ul>
+            </div>
+
+            <h3>Ações para Conservação</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>🌳 Conservação</h4>
+                    <p>Apoiar unidades de conservação e recuperação de áreas degradadas.</p>
+                </div>
+                <div class="card">
+                    <h4>📚 Educação</h4>
+                    <p>Conscientizar sobre a importância do bioma e suas espécies únicas.</p>
+                </div>
+                <div class="card">
+                    <h4>🔬 Pesquisa</h4>
+                    <p>Investir em estudos sobre biodiversidade e uso sustentável.</p>
+                </div>
+                <div class="card">
+                    <h4>🤝 Comunidades</h4>
+                    <p>Valorizar conhecimentos tradicionais e promover desenvolvimento sustentável.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 1rem;"><strong>Caatinga</strong> - Preservar é garantir vida e futuro para o semiárido brasileiro</p>
+            <p style="text-align: center; opacity: 0.8; margin-bottom: 2rem;">Um bioma resiliente que merece nosso respeito e cuidado</p>
+            
+            <div class="references">
+                <h3>📚 Fontes e Referências Científicas</h3>
+                <ol>
+                    <li>
+                        <strong>Ministério do Meio Ambiente e Mudança do Clima</strong> - Caatinga<br>
+                        <a href="https://www.gov.br/mma/pt-br/assuntos/biodiversidade-e-biomas/biomas-e-ecossistemas/biomas/caatinga" target="_blank">www.gov.br/mma</a><br>
+                        <em>Dados oficiais sobre extensão territorial, população e características gerais do bioma.</em>
+                    </li>
+                    <li>
+                        <strong>Instituto Brasileiro de Geografia e Estatística (IBGE)</strong> - Biomas Brasileiros<br>
+                        <a href="https://www.ibge.gov.br/geociencias/cartas-e-mapas/informacoes-ambientais/15842-biomas.html" target="_blank">www.ibge.gov.br</a><br>
+                        <em>Mapa de Biomas do Brasil e informações estatísticas oficiais sobre a Caatinga.</em>
+                    </li>
+                    <li>
+                        <strong>Associação Caatinga</strong> - Sobre a Caatinga: Fauna e Flora<br>
+                        <a href="https://www.acaatinga.org.br/sobre-a-caatinga/" target="_blank">www.acaatinga.org.br</a><br>
+                        <em>Dados científicos atualizados sobre biodiversidade, espécies endêmicas e conservação.</em>
+                    </li>
+                    <li>
+                        <strong>Embrapa</strong> - Portal Bioma Caatinga<br>
+                        <a href="https://www.embrapa.br/agencia-de-informacao-tecnologica/tematicas/bioma-caatinga" target="_blank">www.embrapa.br</a><br>
+                        <em>Informações técnicas sobre solo, clima, flora, fauna e manejo sustentável do bioma.</em>
+                    </li>
+                    <li>
+                        <strong>Biologia Net</strong> - Caatinga: características, fauna, flora, conservação<br>
+                        <a href="https://www.biologianet.com/ecologia/caatinga.htm" target="_blank">www.biologianet.com</a><br>
+                        <em>Conteúdo educacional detalhado sobre as características ecológicas do bioma.</em>
+                    </li>
+                </ol>
+                <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+                    <strong>Nota:</strong> Todas as informações apresentadas neste website são baseadas em fontes científicas confiáveis e atualizadas. Os dados foram compilados para fins educacionais e de conscientização sobre a importância da preservação do bioma Caatinga.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
