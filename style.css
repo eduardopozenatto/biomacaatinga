@@ -192,14 +192,16 @@ h3 {
     color: var(--terra);
 }
 
-#img_mapa {
+#img_mapa, 
+#img_mapa1 {
     display: flex;
     place-content: center;
     place-items: center;
 }
 
  /* Style the Image Used to Trigger the Modal */
-#myImg {
+#myImg, 
+#myImg1 {
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
@@ -207,7 +209,8 @@ h3 {
   height: 300px;
 }
 
-#myImg:hover {
+#myImg:hover, 
+#myImg1:hover {
    opacity: 0.7;
 }
 
@@ -345,7 +348,8 @@ footer {
 }
 
 /* The Modal (background) */
-.modal {
+.modal,
+.modal1 {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 99999; /* Sit on top */
@@ -360,7 +364,8 @@ footer {
 }
 
 /* Modal Content (Image) */
-.modal-content {
+.modal-content, 
+.modal-content1 {
   margin: auto;
   display: block;
   width: 80%;
@@ -368,7 +373,8 @@ footer {
 }
 
 /* Caption of Modal Image (Image Text) - Same Width as the Image */
-#caption {
+#caption, 
+#caption1 {
   margin: auto;
   display: block;
   width: 100%;
@@ -380,7 +386,7 @@ footer {
 }
 
 /* Add Animation - Zoom in the Modal */
-.modal-content, #caption {
+.modal-content, #caption, .modal-content1, #caption1 {
   animation-name: zoom;
   animation-duration: 0.6s;
 }
@@ -391,7 +397,7 @@ footer {
 }
 
 /* The Close Button */
-.close {
+.close, .close1 {
   position: absolute;
   top: 15px;
   right: 35px;
@@ -402,7 +408,9 @@ footer {
 }
 
 .close:hover,
-.close:focus {
+.close:focus, 
+.close1:hover,
+.close1:focus {
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
@@ -410,9 +418,82 @@ footer {
 
 /* 100% Image Width on Smaller Screens */
 @media only screen and (max-width: 700px){
-  .modal-content {
+  .modal-content, .modal-content1 {
     width: 100%;
   }
+}
+
+/* Estilos para as imagens de relevo */
+.relevo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.relevo-item {
+    background: linear-gradient(135deg, var(--areia) 0%, white 100%);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--pedra);
+}
+
+.relevo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+.relevo-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--terra);
+}
+
+.relevo-content {
+    padding: 1.5rem;
+}
+
+.relevo-content h4 {
+    color: var(--terra);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.relevo-content p {
+    color: var(--texto);
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Modelos específicos para cada tipo de relevo */
+.relevo-depressao {
+    border-left-color: #8B7355;
+}
+
+.relevo-depressao .relevo-image {
+    border-bottom-color: #8B7355;
+}
+
+.relevo-planaltos {
+    border-left-color: #C4875C;
+}
+
+.relevo-planaltos .relevo-image {
+    border-bottom-color: #C4875C;
+}
+
+.relevo-inselbergs {
+    border-left-color: #6B8E4E;
+}
+
+.relevo-inselbergs .relevo-image {
+    border-bottom-color: #6B8E4E;
 }
 
 /* Media Queries for Responsiveness */
@@ -514,8 +595,21 @@ footer {
         text-align: center;
     }
     
-    #myImg:hover {
+    #myImg:hover, #myImg1:hover {
         transform: scale(1.2);
+    }
+
+    .relevo-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .relevo-image {
+        height: 180px;
+    }
+    
+    .relevo-content {
+        padding: 1.2rem;
     }
 }
 
